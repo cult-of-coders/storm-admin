@@ -1,30 +1,24 @@
-    import React, {Component} from 'react';
-    import RecursiveDisplay from './RecursiveDisplay';
+import React from 'react';
+import _ from 'underscore';
+import RecursiveDisplay from './RecursiveDisplay.jsx';
 
-    export default class StormTable extends Component {
-
-        render () {
-            return (
-                <table>
-                    <tbody>
-                    {
-                        _.map(this.props.data, dataRow => {
-                            return (
-                                <RecursiveDisplay data={dataRow} key={dataRow._id}/>
-                            )
-                        })
-                    }
-                    {this.props.data.length === 0
-                        ?
-                        <tr>
-                            <td colSpan="5">No items found.</td>
-                        </tr>
-                        : null
-                    }
-                    </tbody>
-                </table>
-
-            )
-        }
-
-    }
+export default function StormTable({ data }) {
+    return (
+        <table>
+            <tbody>
+                {
+                    _.map(data, dataRow => (
+                        <RecursiveDisplay data={dataRow} key={dataRow._id} />
+                    ))
+                }
+                {
+                    data.length === 0
+                    ? <tr>
+                        <td colSpan="5">No items found.</td>
+                    </tr>
+                    : null
+                }
+            </tbody>
+        </table>
+    );
+}

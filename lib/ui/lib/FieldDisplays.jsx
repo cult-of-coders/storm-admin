@@ -1,122 +1,103 @@
-import React, {Component} from 'react';
+import React from 'react';
+import _ from 'underscore';
 import moment from 'moment';
 
-export default class RecursiveItemElement extends Component {
-    render () {
-        if (_.isBoolean(this.props.value)) {
-            return (
-                <BoolField value={this.props.value}/>
-            )
-        }
-        if (_.isNumber(this.props.value)) {
-            return (
-                <NumberField value={this.props.value}/>
-            )
-        }
-        if (_.isArray(this.props.value)) {
-            return (
-                <ArrayField value={this.props.value}/>
-            )
-        }
-        if (_.isDate(this.props.value)) {
-            return (
-                <DateField value={this.props.value}/>
-            )
-        }
-        if (_.isObject(this.props.value)) {
-            return (
-                <ObjectField value={this.props.value}/>
-            )
-        }
+export default function RecursiveItemElement({ data }) {
+    if (_.isBoolean(data)) {
         return (
-            <TextField value={this.props.value}/>
-        )
+            <BoolField value={data} />
+        );
     }
-};
-
-export class TextField extends Component {
-
-    render () {
+    if (_.isNumber(data)) {
         return (
-            <td>
-                {this.props.value}
-            </td>
-        )
+            <NumberField value={data} />
+        );
     }
+    if (_.isArray(data)) {
+        return (
+            <ArrayField value={data} />
+        );
+    }
+    if (_.isDate(data)) {
+        return (
+            <DateField value={data} />
+        );
+    }
+    if (_.isObject(data)) {
+        return (
+            <ObjectField value={data} />
+        );
+    }
+    return (
+        <TextField value={data} />
+    );
 }
 
-export class BoolField extends Component {
-
-    render () {
-        return (
-            <td>
-                {this.props.value
-                    ? 'Yes'
-                    : 'No'
-                }
-            </td>
-        )
-    }
+export function TextField({ value }) {
+    return (
+        <td>
+            {value}
+        </td>
+    );
 }
 
-export class NumberField extends Component {
-
-    render () {
-        return (
-            <td>
-                {this.props.value}
-            </td>
-        )
-    }
+export function BoolField({ value }) {
+    return (
+        <td>
+            {value
+                ? 'Yes'
+                : 'No'
+            }
+        </td>
+    );
 }
 
-export class DateField extends Component {
-
-    render () {
-        return (
-            <td>
-                {this.props.value
-                    ? moment(this.props.value).format('DD-MM-YYYY')
-                    : null
-                }
-            </td>
-        )
-    }
+export function NumberField({ value }) {
+    return (
+        <td>
+            {value}
+        </td>
+    );
 }
 
-export class ArrayField extends Component {
+export function DateField({ value }) {
+    return (
+        <td>
+            {value
+                ? moment(this.props.value).format('DD-MM-YYYY')
+                : null
+            }
+        </td>
+    );
+}
 
-    render () {
-        return (
-            <td>
-                {
-                    _.map(this.props.value, (element)=> {
-                        let id = _.uniqueId();
-                        return (
-                            <span key={id}>{element}, </span>
-                        )
-                    })
-                }
-            </td>
-        )
-    }
+export function ArrayField({ value }) {
+    return (
+        <td>
+            {
+                _.map(value, (element) => {
+                    const id = _.uniqueId();
+                    return (
+                        <span key={id}>{element}, </span>
+                    );
+                })
+            }
+        </td>
+    );
 }
 
 
-export class ObjectField extends Component {
-
-    render () {
-        return (
-            <td>
-                {
-                    _.map(this.props.value, (element, label)=> {
-                        let id = _.uniqueId();
-                        return (
-                            <span key={id}> {label}: <RecursiveItemElement value={element} /> </span>
-                        )
-                    })
-                }
-            </td>
-        )
-    }
+export function ObjectField({ value }) {
+    return (
+        <td>
+            {
+                _.map(value, (element, label) => {
+                    const id = _.uniqueId();
+                    return (
+                        <span key={id}> {label}: <RecursiveItemElement value={element} /> </span>
+                    );
+                })
+            }
+        </td>
+    );
 }
