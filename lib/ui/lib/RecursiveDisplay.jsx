@@ -1,5 +1,5 @@
 import React from 'react';
-import RecursiveItemElement from './FieldDisplays.jsx';
+import RecursiveField from './FieldDisplays/RecursiveField.jsx';
 
 export default function RecursiveDisplay({ data }) {
     return (
@@ -8,7 +8,7 @@ export default function RecursiveDisplay({ data }) {
                 _.map(data, (value, label) => {
                     const id = _.uniqueId(`${label}_`);
                     return (
-                        <RecursiveItemElement data={value} key={id} />
+                        <RecursiveField data={value} key={id} />
                     );
                 })
             }

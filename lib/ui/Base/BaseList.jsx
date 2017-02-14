@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import StormTable from './../lib/StormTable.jsx';
+import StormList from './../lib/StormList.jsx';
 import {createQueryContainer} from 'meteor/cultofcoders:grapher-react';
 import {CircularProgress, Card} from 'material-ui';
 
@@ -13,7 +13,7 @@ const List = ({loading, data, error}) => {
     }
 
     return (
-        <StormTable data={data} />
+        <StormList data={data} />
     );
 };
 
@@ -53,7 +53,7 @@ export default class BaseListWrapper extends Component {
     render() {
         if (this.state.loading) {
             return (
-                <CircularProgress />
+                <div>Loading</div>
             );
         }
 
@@ -62,9 +62,7 @@ export default class BaseListWrapper extends Component {
                 <h3 className="page-title">{this.config.title}</h3>
                 <div className="filtered-list">
                     <div className="storm-list-wrapper">
-                        <Card>
-                            {React.createElement(this.Container)}
-                        </Card>
+                        {React.createElement(this.Container)}
                     </div>
                 </div>
             </div>
