@@ -5,16 +5,16 @@ import {CircularProgress, Card} from 'material-ui';
 
 const List = ({loading, data, error}) => {
     if (loading) {
-        return <div>Loading</div>
+        return <div>Loading</div>;
     }
 
     if (error) {
-        return <div>Error : {error.reason}</div>
+        return <div>Error : {error.reason}</div>;
     }
 
     return (
         <StormTable data={data} />
-    )
+    );
 };
 
 export default class BaseListWrapper extends Component {
@@ -23,14 +23,16 @@ export default class BaseListWrapper extends Component {
         this.state = {
             loading: true
         };
-        this.config = {}
+        this.config = {};
     }
 
     componentDidMount() {
         this._init();
-
     }
-    _init () {
+    getQuery() {
+        return this.query;
+    }
+    _init() {
         if (this.props) {
             this.query = this.props.query;
         }
@@ -48,24 +50,17 @@ export default class BaseListWrapper extends Component {
             loading: false
         });
     }
-    getQuery() {
-        return this.query;
-    }
-
     render() {
         if (this.state.loading) {
             return (
-                <CircularProgress/>
-            )
+                <CircularProgress />
+            );
         }
 
         return (
             <div className="app-page">
                 <h3 className="page-title">{this.config.title}</h3>
                 <div className="filtered-list">
-                    <div className="filter-wrapper">
-
-                    </div>
                     <div className="storm-list-wrapper">
                         <Card>
                             {React.createElement(this.Container)}
@@ -73,6 +68,6 @@ export default class BaseListWrapper extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }

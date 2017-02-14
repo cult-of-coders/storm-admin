@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'underscore';
 import moment from 'moment';
 
 export default function RecursiveItemElement({ data }) {
@@ -64,7 +63,7 @@ export function DateField({ value }) {
     return (
         <td>
             {value
-                ? moment(this.props.value).format('DD-MM-YYYY')
+                ? moment(value).format('DD-MM-YYYY')
                 : null
             }
         </td>

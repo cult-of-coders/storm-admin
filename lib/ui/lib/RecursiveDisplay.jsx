@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'underscore';
 import RecursiveItemElement from './FieldDisplays.jsx';
 
 export default function RecursiveDisplay({ data }) {

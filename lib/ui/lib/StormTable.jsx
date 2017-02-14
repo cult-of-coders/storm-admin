@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'underscore';
 import RecursiveDisplay from './RecursiveDisplay.jsx';
 
 export default function StormTable({ data }) {
