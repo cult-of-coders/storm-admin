@@ -58,10 +58,10 @@ export default class BaseListWrapper extends Component {
         }
 
         return (
-            <div className="app-page">
-                <h3 className="page-title">{this.config.title}</h3>
+            <div className="storm-list-wrapper-outer">
+                <h3 className="storm-list-title">{this.config.title}</h3>
                 <div className="filtered-list">
-                    <div className="storm-list-wrapper">
+                    <div className="storm-list-wrapper-inner">
                         {React.createElement(this.Container)}
                     </div>
                 </div>
