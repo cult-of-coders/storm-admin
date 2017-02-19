@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function TextField({ value }) {
     return (
-        <td>
+        <div>
             {value}
-        </td>
+        </div>
     );
 }

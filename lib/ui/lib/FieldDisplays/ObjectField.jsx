@@ -3,15 +3,15 @@ import RecursiveField from './RecursiveField.jsx';
 
 export default function ObjectField({ value }) {
     return (
-        <td>
+        <div>
             {
                 _.map(value, (element, label) => {
                     const id = _.uniqueId();
                     return (
-                        <span key={id}> {label}: <RecursiveField value={element} /> </span>
+                        <div key={id}> {label}: <RecursiveField value={element} /> </div>
                     );
                 })
             }
-        </td>
+        </div>
     );
 }

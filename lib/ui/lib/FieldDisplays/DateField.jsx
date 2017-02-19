@@ -3,11 +3,11 @@ import moment from 'moment';
 
 export default function DateField({ value }) {
     return (
-        <td>
+        <div>
             {value
                 ? moment(value).format('DD-MM-YYYY')
                 : null
             }
-        </td>
+        </div>
     );
 }

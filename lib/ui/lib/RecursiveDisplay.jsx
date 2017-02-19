@@ -3,7 +3,7 @@ import RecursiveField from './FieldDisplays/RecursiveField.jsx';
 
 export default function RecursiveDisplay({ data }) {
     return (
-        <tr>
+        <div>
             {
                 _.map(data, (value, label) => {
                     const id = _.uniqueId(`${label}_`);
@@ -12,6 +12,6 @@ export default function RecursiveDisplay({ data }) {
                     );
                 })
             }
-        </tr>
+        </div>
     );
 }

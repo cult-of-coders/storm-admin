@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function BoolField({ value }) {
     return (
-        <td>
+        <div>
             {value
                 ? 'Yes'
                 : 'No'
             }
-        </td>
+        </div>
     );
 }
